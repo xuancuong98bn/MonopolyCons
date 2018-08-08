@@ -14,7 +14,7 @@ namespace MonopolyConsole
             rand = new Random();
         }
 
-        public int rollDice()
+        public int RollDice()
         {
             number = rand.Next(1, 7);
             return number;

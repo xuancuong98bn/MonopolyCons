@@ -9,3 +9,14 @@ D:\ProjectCSharp\MonopolyConsole\MonopolyConsole\obj\Debug\netcoreapp2.0\Monopol
 D:\ProjectCSharp\MonopolyConsole\MonopolyConsole\obj\Debug\netcoreapp2.0\MonopolyConsole.AssemblyInfo.cs
 D:\ProjectCSharp\MonopolyConsole\MonopolyConsole\obj\Debug\netcoreapp2.0\MonopolyConsole.dll
 D:\ProjectCSharp\MonopolyConsole\MonopolyConsole\obj\Debug\netcoreapp2.0\MonopolyConsole.pdb
+D:\ProjectCSharp\MonopolyCons\MonopolyConsole\MonopolyConsole\bin\Debug\netcoreapp2.0\MonopolyConsole.deps.json
+D:\ProjectCSharp\MonopolyCons\MonopolyConsole\MonopolyConsole\bin\Debug\netcoreapp2.0\MonopolyConsole.runtimeconfig.json
+D:\ProjectCSharp\MonopolyCons\MonopolyConsole\MonopolyConsole\bin\Debug\netcoreapp2.0\MonopolyConsole.runtimeconfig.dev.json
+D:\ProjectCSharp\MonopolyCons\MonopolyConsole\MonopolyConsole\bin\Debug\netcoreapp2.0\MonopolyConsole.dll
+D:\ProjectCSharp\MonopolyCons\MonopolyConsole\MonopolyConsole\bin\Debug\netcoreapp2.0\MonopolyConsole.pdb
+D:\ProjectCSharp\MonopolyCons\MonopolyConsole\MonopolyConsole\obj\Debug\netcoreapp2.0\MonopolyConsole.csprojResolveAssemblyReference.cache
+D:\ProjectCSharp\MonopolyCons\MonopolyConsole\MonopolyConsole\obj\Debug\netcoreapp2.0\MonopolyConsole.csproj.CoreCompileInputs.cache
+D:\ProjectCSharp\MonopolyCons\MonopolyConsole\MonopolyConsole\obj\Debug\netcoreapp2.0\MonopolyConsole.AssemblyInfoInputs.cache
+D:\ProjectCSharp\MonopolyCons\MonopolyConsole\MonopolyConsole\obj\Debug\netcoreapp2.0\MonopolyConsole.AssemblyInfo.cs
+D:\ProjectCSharp\MonopolyCons\MonopolyConsole\MonopolyConsole\obj\Debug\netcoreapp2.0\MonopolyConsole.dll
+D:\ProjectCSharp\MonopolyCons\MonopolyConsole\MonopolyConsole\obj\Debug\netcoreapp2.0\MonopolyConsole.pdb

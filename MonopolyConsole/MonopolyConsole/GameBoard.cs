@@ -8,28 +8,34 @@ namespace MonopolyConsole
     class GameBoard
     {
         private int totalCell;
+        ArrayList listCell;
+        public int TotalCell { get => totalCell; set => totalCell = value; }
 
-        public GameBoard(int totalCell)
+        public GameBoard(int totalCell, ArrayList listCell)
         {
-            this.totalCell = totalCell;
+            this.TotalCell = totalCell;
+            this.listCell = listCell;
+            InitCell();
         }
 
-        public ArrayList initCell()
-        {
-            ArrayList list = new ArrayList();
-            for (int i = 0; i < totalCell; i++)
+        private void InitCell()
+        {            
+            for (int i = 0; i < TotalCell; i++)
             {
                 Cell cell = new Cell(i);
-                list.Add(cell);
+                listCell.Add(cell);
             }
-            return list;
+            SetupCard();
         }
 
-        public void addCard(Object card, int index, ArrayList listCell)
+        public void AddCard(Object card, int index)
         {
-           
+            listCell[index] = card;
         }
 
-
+        public void SetupCard()
+        {
+            AddCard(new StartCell(), 0);
+        }
     }
 }

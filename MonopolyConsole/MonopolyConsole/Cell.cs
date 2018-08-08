@@ -20,7 +20,7 @@ namespace MonopolyConsole
 
         public int IdCell { get => idCell; set => idCell = value; }
 
-        public void function() {
+        public virtual void Function() {
             //Override in subclass
         }
     }

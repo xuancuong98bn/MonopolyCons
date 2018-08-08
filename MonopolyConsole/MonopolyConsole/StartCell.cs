@@ -18,5 +18,10 @@ namespace MonopolyConsole
         }
 
         public int Treasure { get => treasure; set => treasure = value; }
+
+        public override void Function()
+        {
+            Console.WriteLine("ec");
+        }
     }
 }

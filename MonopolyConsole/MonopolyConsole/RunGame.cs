@@ -9,16 +9,16 @@ namespace MonopolyConsole
     {
         static void Main(string[] args)
         {
-            GameBoard gameBoard = new GameBoard(10);
-            Player player = new Player();
+            ArrayList listCell = new ArrayList();
+            GameBoard gameBoard = new GameBoard(54, listCell);
+            Player player = new Player("Player 1", gameBoard);
             Dice dice = new Dice();
-            ArrayList listCell = gameBoard.initCell();
             Behavior behavior = new Behavior(player, dice, gameBoard, listCell);
 
             
-            behavior.turnPlayer();
-            behavior.turnPlayer();
-            behavior.turnPlayer();
+            behavior.TurnPlayer();
+            behavior.TurnPlayer();
+            behavior.TurnPlayer();
             Console.ReadKey();
         }
     }

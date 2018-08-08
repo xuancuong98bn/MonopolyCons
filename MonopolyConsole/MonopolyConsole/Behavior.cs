@@ -24,20 +24,19 @@ namespace MonopolyConsole
             this.listCell = listCell;
         }
 
-        public void checkLocation()
+        public void CheckLocation()
         {
             int playerLocation = player.Location;
             Console.WriteLine(playerLocation);
-            ((Cell)listCell[playerLocation]).function();
-            //outofboundexc
+            ((Cell)listCell[playerLocation]).Function();
         }
 
-        public void turnPlayer()
+        public void TurnPlayer()
         {
-            checkLocation();
-            int number =  dice.rollDice();
-            player.moveUp(number);
-            checkLocation();
+            CheckLocation();
+            int number =  dice.RollDice();
+            player.MoveUp(number);
+            CheckLocation();
         }
     }
 }

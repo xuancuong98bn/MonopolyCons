@@ -14,6 +14,9 @@ namespace MonopolyConsole
         private int ownLandNumber;
         private int playedRound;
 
+        private int countLocation;
+        private GameBoard gameBoard;
+
         public string Name { get => name; set => name = value; }
         public int Cash { get => cash; set => cash = value; }
         public int Value { get => value; set => this.value = value; }
@@ -25,30 +28,36 @@ namespace MonopolyConsole
         public Player()
         {
         }
-        public Player(string name)
+        public Player(string name, GameBoard gameBoard)
         {
             this.Name = name;
             cash = 1000;
             value = 1000;
             location = 0;
+            countLocation = 0;
             goToPrison = 0;
             ownLandNumber = 0;
             playedRound = 0;
+
+            this.gameBoard = gameBoard;
         }
 
-        public void moveUp(int number)
+        public void MoveUp(int number)
         {
-            location += number;
+            countLocation += number;
+            UpdateLocation();
         }
 
-        public void moveDown(int number)
+        public void MoveDown(int number)
         {
-            location -= number;
+            countLocation -= number;
+            UpdateLocation();
         }
         
-        public void updateInfoPlayer()
+        private void UpdateLocation()
         {
-
+            location = countLocation % gameBoard.TotalCell;
+            playedRound = countLocation / gameBoard.TotalCell;
         }
     }
 }
