@@ -12,11 +12,16 @@ namespace MonopolyConsole
         {
         }
 
-        public Festival(int idCell, int price) : base(idCell)
+        public Festival(int idCell) : base(idCell)
         {
-            this.price = price;
+            this.price = number.festivalValue;
         }
 
         public int Price { get => price ; set => price = value ; }
+
+        public override void Function(Player player)
+        {
+            //will override later
+        }
     }
 }

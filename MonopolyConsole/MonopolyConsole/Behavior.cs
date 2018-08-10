@@ -11,7 +11,9 @@ namespace MonopolyConsole
         private Dice dice;
         private GameBoard gameBoard;
         private ArrayList listCell;
-        
+        private Number num;
+
+
         public Behavior()
         {
         }
@@ -22,21 +24,45 @@ namespace MonopolyConsole
             this.dice = dice;
             this.gameBoard = gameBoard;
             this.listCell = listCell;
+            num = new Number();
         }
 
         public void CheckLocation()
         {
             int playerLocation = player.Location;
-            Console.WriteLine(playerLocation);
-            ((Cell)listCell[playerLocation]).Function();
+            player.PlayerInfo();
+            ((Cell)listCell[playerLocation]).Function(player);
+        }
+
+        public void CheckLocationWalkThrough(int numberDice)
+        {
+            int playerLocation = player.Location;
+            int nextLocation = playerLocation + numberDice;
+            for (int i = playerLocation+1; i < nextLocation; i++)
+            {
+                if (i >= gameBoard.TotalCell)
+                {
+                    i -= gameBoard.TotalCell;
+                }
+                ((Cell)listCell[i]).DoFunctionIfWalkThrough(player);
+            }
         }
 
         public void TurnPlayer()
         {
             CheckLocation();
             int number =  dice.RollDice();
-            player.MoveUp(number);
-            CheckLocation();
+            if (number == num.outPrisonNum)
+            {
+                player.GoToPrison = 0;
+            }
+            if (player.GoToPrison > 0) player.GoToPrison--;
+            else
+            {
+                CheckLocationWalkThrough(number);
+                player.MoveUp(number);
+                CheckLocation();
+            }
         }
     }
 }

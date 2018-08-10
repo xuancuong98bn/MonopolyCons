@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Text;
 
@@ -15,7 +16,11 @@ namespace MonopolyConsole
         private int playedRound;
 
         private int countLocation;
+        private Dice dice;
         private GameBoard gameBoard;
+        private ArrayList listCell;
+
+        private Number num;
 
         public string Name { get => name; set => name = value; }
         public int Cash { get => cash; set => cash = value; }
@@ -28,7 +33,7 @@ namespace MonopolyConsole
         public Player()
         {
         }
-        public Player(string name, GameBoard gameBoard)
+        public Player(string name, Dice dice, GameBoard gameBoard, ArrayList listCell)
         {
             this.Name = name;
             cash = 1000;
@@ -39,13 +44,28 @@ namespace MonopolyConsole
             ownLandNumber = 0;
             playedRound = 0;
 
+            this.dice = dice;
             this.gameBoard = gameBoard;
+            this.listCell = listCell;
+            num = new Number();
         }
 
+        public void PlayerInfo()
+        {
+            Console.WriteLine("Name: " + name);
+            Console.WriteLine("Cash: " + cash);
+            Console.WriteLine("Value: " + value);
+            Console.WriteLine("Location: "+ location);
+            Console.WriteLine("GotoPrison: " + goToPrison);
+            Console.WriteLine("OwnlandNumber: " + ownLandNumber);
+            Console.WriteLine("PlayedRound: " + playedRound+"\n");
+        }
         public void MoveUp(int number)
         {
+            CheckLocationWalkThrough(number);
             countLocation += number;
             UpdateLocation();
+            CheckLocation();
         }
 
         public void MoveDown(int number)
@@ -54,10 +74,72 @@ namespace MonopolyConsole
             UpdateLocation();
         }
         
+        public void MoveTo(int toLocation)
+        {
+            if (toLocation < location)
+            {
+                toLocation += gameBoard.TotalCell;
+            }
+            MoveUp(toLocation - location);
+        }
+        //use with positive and negative number
+        public void MakeMoney(int money)
+        {
+            cash += money;
+            value += money;
+        }
+
+        public void FineTo(Player otherPlayer, int penalty)
+        {
+            MakeMoney(-penalty);
+            otherPlayer.MakeMoney(penalty);
+        }
+
+        public bool BuyCell(Cell cell)
+        {
+            if (cash < cell.BuyCell) return false;
+            cash -= cell.BuyCell;
+            value = value - cell.BuyCell + cell.ValueCell;
+            return true;
+        }
         private void UpdateLocation()
         {
             location = countLocation % gameBoard.TotalCell;
             playedRound = countLocation / gameBoard.TotalCell;
+        }
+
+        public void CheckLocation()
+        {
+            PlayerInfo();
+            ((Cell)listCell[location]).Function(this);
+        }
+
+        public void CheckLocationWalkThrough(int numberDice)
+        {
+            int playerLocation = location;
+            int nextLocation = playerLocation + numberDice;
+            for (int i = playerLocation + 1; i < nextLocation; i++)
+            {
+                if (i >= gameBoard.TotalCell)
+                {
+                    i -= gameBoard.TotalCell;
+                }
+                ((Cell)listCell[i]).DoFunctionIfWalkThrough(this);
+            }
+        }
+
+        public void TurnPlayer()
+        {
+            int number = dice.RollDice();
+            if (number == num.outPrisonNum)
+            {
+                goToPrison = 0;
+            }
+            if (goToPrison > 0) goToPrison--;
+            else
+            {                
+                MoveUp(number);                
+            }
         }
     }
 }

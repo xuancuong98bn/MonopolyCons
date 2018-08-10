@@ -7,21 +7,20 @@ namespace MonopolyConsole
     class StartCell : Cell
     {
         private int treasure;
-
         public StartCell()
         {
         }
 
-        public StartCell(int idCell, int treasure) : base(idCell)
+        public StartCell(int idCell) : base(idCell)
         {
-            Treasure = treasure;
+            treasure = number.startCellValue;
         }
 
         public int Treasure { get => treasure; set => treasure = value; }
 
-        public override void Function()
+        public override void DoFunctionIfWalkThrough(Player player)
         {
-            Console.WriteLine("ec");
+            player.MakeMoney(Treasure);
         }
     }
 }

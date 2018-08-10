@@ -13,7 +13,7 @@ namespace MonopolyConsole
 
         public GameBoard(int totalCell, ArrayList listCell)
         {
-            this.TotalCell = totalCell;
+            this.totalCell = totalCell;
             this.listCell = listCell;
             InitCell();
         }
