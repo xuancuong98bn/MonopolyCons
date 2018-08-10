@@ -37,7 +37,7 @@ namespace MonopolyConsole
         public int BuyCell { get => buyCell; set => buyCell = value; }
         public int SellCell { get => sellCell; set => sellCell = value; }
         public int ValueCell { get => valueCell; set => valueCell = value; }
-        public string Owner { get => owner; set => owner = value; }
+        public Player Owner { get => owner; set => owner = value; }
         public int Penalty { get => penalty; set => penalty = value; }
 
         public virtual void Function(Player player) {
@@ -57,16 +57,18 @@ namespace MonopolyConsole
         {
             //use with each child
         }
-        public void BuyThisCell(Player player, int factor)
+        public bool BuyThisCell(Player player, double factor)
         {
             if (BuyOrNot(player, factor))
             {
                 player.BuyCell(this);
                 owner = player;
+                return true;
             }
+            return false;
         }
 
-        public bool BuyOrNot(Player player, int factor)
+        public bool BuyOrNot(Player player, double factor)
         {
             if (!owner.Equals(""))
             {
@@ -96,9 +98,9 @@ namespace MonopolyConsole
             } while (true);
         }
 
-        public void Fine(Player player, int factor)
+        public void Fine(Player player, double factor)
         {
-            player.FineTo(owner, penalty*factor);
+            player.FineTo(owner, (int)(penalty*factor));
         }
     }
 }

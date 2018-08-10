@@ -16,12 +16,6 @@ namespace MonopolyConsole
 
         public override void Function(Player player)
         {
-            int number = 0;
-            int playerLocation = player.Location;
-            do {
-                Console.Write("Enter number want to go: ");
-            } while (!int.TryParse(Console.ReadLine(), out number));
-            player.MoveTo(number);
             
         }
     }

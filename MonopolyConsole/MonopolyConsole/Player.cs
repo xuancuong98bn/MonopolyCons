@@ -12,6 +12,7 @@ namespace MonopolyConsole
         private int value;
         private int location;
         private int goToPrison;
+        private int hasHealCard;
         private int ownLandNumber;
         private int playedRound;
 
@@ -29,6 +30,7 @@ namespace MonopolyConsole
         public int GoToPrison { get => goToPrison; set => goToPrison = value; }
         public int OwnLandNumber { get => ownLandNumber; set => ownLandNumber = value; }
         public int PlayedRound { get => playedRound; set => playedRound = value; }
+        public int HasHealCard { get => hasHealCard; set => hasHealCard = value; }
 
         public Player()
         {
@@ -41,6 +43,7 @@ namespace MonopolyConsole
             location = 0;
             countLocation = 0;
             goToPrison = 0;
+            hasHealCard = 0;
             ownLandNumber = 0;
             playedRound = 0;
 
@@ -57,6 +60,7 @@ namespace MonopolyConsole
             Console.WriteLine("Value: " + value);
             Console.WriteLine("Location: "+ location);
             Console.WriteLine("GotoPrison: " + goToPrison);
+            Console.WriteLine("Number Heal Card: " + hasHealCard);
             Console.WriteLine("OwnlandNumber: " + ownLandNumber);
             Console.WriteLine("PlayedRound: " + playedRound+"\n");
         }
@@ -120,25 +124,23 @@ namespace MonopolyConsole
             int nextLocation = playerLocation + numberDice;
             for (int i = playerLocation + 1; i < nextLocation; i++)
             {
-                if (i >= gameBoard.TotalCell)
-                {
-                    i -= gameBoard.TotalCell;
-                }
-                ((Cell)listCell[i]).DoFunctionIfWalkThrough(this);
+                int loc = i % gameBoard.TotalCell;
+                ((Cell)listCell[loc]).DoFunctionIfWalkThrough(this);
             }
         }
 
         public void TurnPlayer()
         {
             int number = dice.RollDice();
+            Console.WriteLine("Dice: " + number);
             if (number == num.outPrisonNum)
             {
                 goToPrison = 0;
             }
             if (goToPrison > 0) goToPrison--;
             else
-            {                
-                MoveUp(number);                
+            {
+                MoveUp(number);
             }
         }
     }

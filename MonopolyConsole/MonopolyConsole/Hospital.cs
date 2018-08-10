@@ -7,6 +7,7 @@ namespace MonopolyConsole
     class Hospital : Cell
     {
         private int fixPenalty;
+
         public Hospital()
         {
         }
@@ -18,7 +19,15 @@ namespace MonopolyConsole
 
         public override void Function(Player player)
         {
-            BuyThisCell(player);
+            double number = 1;
+            if (player.HasHealCard > 0)
+            {
+                number = 0.5;
+            }
+            if (BuyThisCell(player, number))
+            {
+                penalty = fixPenalty;
+            }
         }
     }
 }

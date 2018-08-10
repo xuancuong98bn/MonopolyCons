@@ -6,7 +6,7 @@ namespace MonopolyConsole
 {
     class Number
     {
-        public int numCell = 55;
+        public int numCell = 5;
         public int startCellValue = 1000;
         public int festivalValue = 1000;
         public int distanceFromPrison = 33;
