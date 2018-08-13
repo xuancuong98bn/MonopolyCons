@@ -11,7 +11,7 @@ namespace MonopolyConsole
         {
         }
 
-        public StartCell(int idCell) : base(idCell)
+        public StartCell(int idCell, String nameCell) : base(idCell, nameCell)
         {
             treasure = number.startCellValue;
         }

@@ -12,9 +12,9 @@ namespace MonopolyConsole
         {
         }
 
-        public Festival(int idCell) : base(idCell)
+        public Festival(int idCell, String nameCell) : base(idCell, nameCell)
         {
-            this.price = number.festivalValue;
+            price = number.festivalValue;
         }
 
         public int Price { get => price ; set => price = value ; }

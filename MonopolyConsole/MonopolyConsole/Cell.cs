@@ -7,6 +7,7 @@ namespace MonopolyConsole
     class Cell
     {
         protected int idCell;
+        private String nameCell;
         protected Player owner;
         protected int buyCell;
         protected int sellCell;
@@ -24,9 +25,15 @@ namespace MonopolyConsole
             this.idCell = idCell;            
         }
 
-        public Cell(int idCell, int buyCell, int sellCell, int penalty)
+        public Cell(int idCell, String nameCell)
         {
             this.idCell = idCell;
+            this.nameCell = nameCell;
+        }
+        public Cell(int idCell, String nameCell, int buyCell, int sellCell, int penalty)
+        {
+            this.idCell = idCell;
+            this.nameCell = nameCell;
             this.buyCell = buyCell;
             this.sellCell = sellCell;
             valueCell = sellCell;
@@ -39,6 +46,7 @@ namespace MonopolyConsole
         public int ValueCell { get => valueCell; set => valueCell = value; }
         public Player Owner { get => owner; set => owner = value; }
         public int Penalty { get => penalty; set => penalty = value; }
+        protected string NameCell { get => nameCell; set => nameCell = value; }
 
         public virtual void Function(Player player) {
             //Override in subclass
@@ -53,7 +61,7 @@ namespace MonopolyConsole
             //use to modify value of this cell
         }
 
-        public virtual void UpgradeCell()
+        public virtual void UpgradeCell(Player player)
         {
             //use with each child
         }
@@ -62,7 +70,6 @@ namespace MonopolyConsole
             if (BuyOrNot(player, factor))
             {
                 player.BuyCell(this);
-                owner = player;
                 return true;
             }
             return false;
@@ -74,7 +81,7 @@ namespace MonopolyConsole
             {
                 if (owner.Equals(player))
                 {
-                    UpgradeCell();
+                    UpgradeCell(player);
                 }
                 else
                 {
@@ -87,20 +94,25 @@ namespace MonopolyConsole
                 Console.WriteLine("Not enough cash");
                 return false;
             }
+            return QuestionYN("Do you want to buy this cell ? (Y/N)");
+        }
+
+        public void Fine(Player player, double factor)
+        {
+            player.FineTo(owner, (int)(penalty*factor));
+        }
+
+        public bool QuestionYN(String s)
+        {
             do
             {
-                Console.WriteLine("Do you want to buy this cell ? (Y/N)");
+                Console.WriteLine(s);
                 if (Console.ReadLine().Equals("Y"))
                     return true;
                 if (Console.ReadLine().Equals("N"))
                     return false;
                 Console.WriteLine("Invalid character");
             } while (true);
-        }
-
-        public void Fine(Player player, double factor)
-        {
-            player.FineTo(owner, (int)(penalty*factor));
         }
     }
 }

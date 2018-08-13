@@ -9,7 +9,7 @@ namespace MonopolyConsole
         public ToPrison()
         {
         }
-        public ToPrison(int idCell) : base(idCell)
+        public ToPrison(int idCell, String nameCell) : base(idCell, nameCell)
         {
         }
 

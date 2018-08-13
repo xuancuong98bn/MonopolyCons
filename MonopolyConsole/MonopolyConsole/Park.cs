@@ -10,7 +10,7 @@ namespace MonopolyConsole
         {
         }
 
-        public Park(int idCell) : base (idCell)
+        public Park(int idCell, String nameCell) : base (idCell, nameCell)
         {
         }
 

@@ -104,8 +104,17 @@ namespace MonopolyConsole
             if (cash < cell.BuyCell) return false;
             cash -= cell.BuyCell;
             value = value - cell.BuyCell + cell.ValueCell;
+            cell.Owner = this ;
             return true;
         }
+
+        public bool UpgradeCell(int moneyUp)
+        {
+            if (cash < moneyUp) return false;
+            cash -= moneyUp;
+            return true;
+        }
+
         private void UpdateLocation()
         {
             location = countLocation % gameBoard.TotalCell;

@@ -9,7 +9,7 @@ namespace MonopolyConsole
     {
         static void Main(string[] args)
         {
-            Number number = new Number();
+            Number number = new Number();  
             ArrayList listCell = new ArrayList();
             Dice dice = new Dice();
             GameBoard gameBoard = new GameBoard(number.numCell, listCell);
